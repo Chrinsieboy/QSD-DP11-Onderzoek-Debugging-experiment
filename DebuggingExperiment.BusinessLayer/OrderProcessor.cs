@@ -12,7 +12,10 @@ public class OrderProcessor
         {
             if (!item.InStock)
             {
+                // BUG: 'break' stopt de hele loop direct!
+                // FIX: Dit moet 'continue;' zijn om naar het volgende item te gaan.
                 break;
+                // continue;
             }
 
             total += item.Price;
