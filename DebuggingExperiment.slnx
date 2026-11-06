@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="DebuggingExperiment.Models/DebuggingExperiment.Models.csproj" />
+  <Project Path="DebuggingExperiment.BusinessLayer/DebuggingExperiment.BusinessLayer.csproj" />
+  <Project Path="DebuggingExperiment.ConsoleApp/DebuggingExperiment.ConsoleApp.csproj" />
+</Solution>
