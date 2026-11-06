@@ -1,4 +1,4 @@
-# DebuggingExperiment - Order Processing System
+# DebuggingExperiment - Order Processing System (Versie A)
 
 Dit project is een C# .NET 10 console-applicatie, speciaal opgezet als gecontroleerd experiment voor SE-studenten (met kennis van leerjaar 1 en 2) voor het onderzoeken van foutopsporing (debugging). 
 
