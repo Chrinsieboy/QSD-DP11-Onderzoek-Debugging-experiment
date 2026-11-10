@@ -2,32 +2,37 @@ using System;
 using DebuggingExperiment.BusinessLayer;
 using DebuggingExperiment.Models;
 
-Console.WriteLine("\n   ORDER PROCESSING SYSTEM - VERIFICATION RUN    \n");
+Console.WriteLine("\n   PRODUCT ASSEMBLY SYSTEM - VERSIE B    \n");
 
-var order = new Order(new Customer { Name = "Alex de Vries" });
+var wielSet = new Component("Wiel Set (Geassembleerd)", 10.00m);
+wielSet.Add(new Component("Autoband", 50.00m));
+wielSet.Add(new Component("Sport Velg", 40.00m));
 
-order.AddItem(new OrderItem("Toetsenbord", 30.00m, true));
-order.AddItem(new OrderItem("Muismat", 10.00m, false)); 
-order.AddItem(new OrderItem("Webcam", 45.00m, true));
-order.AddItem(new OrderItem("USB Kabel", 5.00m, true));
+var auto = new Component("Sportwagen X", 5000.00m);
 
-var processor = new OrderProcessor();
-decimal finalPrice = processor.CalculateTotal(order);
+auto.Add(wielSet); 
+auto.Add(wielSet); 
+auto.Add(wielSet); 
+auto.Add(wielSet); 
 
-Console.WriteLine($"Aantal items in bestelling: {order.Items.Count}");
+var calculator = new PriceCalculator();
+decimal finalPrice = calculator.CalculateTotal(auto);
+
+Console.WriteLine($"Product: {auto.Name}");
+Console.WriteLine($"Aantal hoofdonderdelen gemonteerd: {auto.SubComponents.Count}");
 Console.WriteLine("--------------------------------------------------");
-Console.WriteLine("VERWACHTE TOTAALPRIJS : € 80.00");
+Console.WriteLine("VERWACHTE TOTAALPRIJS : € 5400.00");
 Console.WriteLine($"ACTUELE TOTAALPRIJS   : € {finalPrice:F2}");
 Console.WriteLine("--------------------------------------------------");
 
-if (finalPrice == 80.00m)
+if (Math.Abs(finalPrice - 5400.00m) < 0.01m)
 {
     Console.WriteLine("RESULTAAT: SUCCESS - Systeem werkt correct!");
 }
 else
 {
     Console.WriteLine("RESULTAAT: FOUT - De berekende totaalprijs is onjuist!");
-    Console.WriteLine("OPDRACHT VOOR STUDENT: Vind de exacte regel en oorzaak van deze afwijking.");
+    Console.WriteLine("OPDRACHT VOOR STUDENT (Jaar 3): Vind de logische fout in de datastructuur/recursie.");
 }
 
 Console.ReadLine();

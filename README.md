@@ -1,6 +1,6 @@
-# DebuggingExperiment - Order Processing System (Versie A)
+# DebuggingExperiment - Order Processing System (Versie B)
 
-Dit project is een C# .NET 10 console-applicatie, speciaal opgezet als gecontroleerd experiment voor SE-studenten (met kennis van leerjaar 1 en 2) voor het onderzoeken van foutopsporing (debugging). 
+Dit project is een C# .NET 10 console-applicatie, speciaal opgezet als gecontroleerd experiment voor SE-studenten voor het onderzoeken van foutopsporing (debugging). 
 
 Het doel is om te meten hoe snel en accuraat studenten een ingebouwde logische fout (bug) kunnen vinden in onbekende code, met behulp van ofwel **logging** of een **interactieve debugger**.
 
@@ -8,27 +8,23 @@ Het doel is om te meten hoe snel en accuraat studenten een ingebouwde logische f
 
 ## Applicatie Overzicht
 
-De applicatie simuleert de berekening van een winkelmandje:
-1. De code loopt door de lijst met items in de bestelling.
-2. Items die **niet op voorraad** zijn, moeten genegeerd/overgeslagen worden.
-3. Items die **wel op voorraad** zijn, worden opgeteld.
-4. Als de totale bestelwaarde onder de € 50,00 blijft, wordt er € 5,00 verzendkosten gerekend.
+De applicatie berekent de kostprijs van een samengesteld product (Bill of Materials).
+Omdat producten (zoals wielen) meerdere keren in een assemblage (Tree structuur) kunnen voorkomen, wordt er een `Dictionary<string, decimal>` gebruikt als cache (Hashmap). Als een onderdeel al berekend is, wordt de prijs uit de cache gehaald om rekenkracht te besparen.
 
 ---
 
 ## Verwacht vs. Actueel Resultaat
 
-* **Bestelling:**
-  - Toetsenbord (€ 30.00) - Op voorraad
-  - Muismat (€ 10.00) - Niet op voorraad
-  - Webcam (€ 45.00) - Op voorraad
-  - USB Kabel (€ 5.00) - Op voorraad
+* **Assemblage:**
+  - Sportwagen X (Chassis) - € 5000,00
+  - 4 x Wiel Set. 
+    *(Een Wiel Set kost € 10 voor assemblage + € 50 voor de Band + € 40 voor de Velg = € 100,00 per set).*
 
 * **Verwachte totaalprijs:**  
-  `30 + 45 + 5` = **€ 80,00** (Geen verzendkosten want € 80 > € 50)
+  `€ 5000 + (4 * € 100)` = **€ 5400,00**
 
 * **Actuele uitkomst bij uitvoering (Door de bug!):**  
-  **€ 35,00** *(RESULTAAT: FOUT)*
+  **€ 5130,00** *(RESULTAAT: FOUT)*
 
 ---
 
