@@ -19,8 +19,11 @@ public class PriceCalculator
         {
             totalCost += CalculateTotal(sub);
         }
-        
-        _priceCache[component.Name] = component.BasePrice; 
+
+        // BUG: Hier wordt de verkeerde waarde in de cache opgeslagen.
+        // FIX: Sla de totale kosten op in de cache.
+        _priceCache[component.Name] = component.BasePrice;
+        // _priceCache[component.Name] = totalCost;
 
         return totalCost;
     }
