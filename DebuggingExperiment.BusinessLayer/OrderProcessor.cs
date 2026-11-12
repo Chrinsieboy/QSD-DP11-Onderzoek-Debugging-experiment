@@ -10,6 +10,7 @@ public class OrderProcessor
 
         foreach (var item in order.Items)
         {
+            Console.WriteLine(item.InStock);
             if (!item.InStock)
             {
                 break;
