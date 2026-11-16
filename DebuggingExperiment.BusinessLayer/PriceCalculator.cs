@@ -20,7 +20,7 @@ public class PriceCalculator
             totalCost += CalculateTotal(sub);
         }
         
-        _priceCache[component.Name] = component.BasePrice; 
+        _priceCache[component.Name] = totalCost; 
 
         return totalCost;
     }
