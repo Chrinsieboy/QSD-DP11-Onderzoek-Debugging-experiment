@@ -32,7 +32,6 @@ if (Math.Abs(finalPrice - 5400.00m) < 0.01m)
 else
 {
     Console.WriteLine("RESULTAAT: FOUT - De berekende totaalprijs is onjuist!");
-    Console.WriteLine("OPDRACHT VOOR STUDENT (Jaar 3): Vind de logische fout in de datastructuur/recursie.");
 }
 
 Console.ReadLine();
