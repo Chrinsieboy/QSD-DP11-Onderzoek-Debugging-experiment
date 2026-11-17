@@ -12,7 +12,7 @@ public class OrderProcessor
         {
             if (!item.InStock)
             {
-                break;
+                continue;
             }
 
             total += item.Price;
