@@ -10,10 +10,10 @@ wielSet.Add(new Component("Sport Velg", 40.00m));
 
 var auto = new Component("Sportwagen X", 5000.00m);
 
+auto.Add(wielSet);
+auto.Add(wielSet);
 auto.Add(wielSet); 
-auto.Add(wielSet); 
-auto.Add(wielSet); 
-auto.Add(wielSet); 
+auto.Add(wielSet);
 
 var calculator = new PriceCalculator();
 decimal finalPrice = calculator.CalculateTotal(auto);

@@ -18,9 +18,10 @@ public class PriceCalculator
         foreach (var sub in component.SubComponents)
         {
             totalCost += CalculateTotal(sub);
+            Console.WriteLine($"cost for {sub.Name}: {totalCost}");
         }
         
-        _priceCache[component.Name] = component.BasePrice; 
+        _priceCache[component.Name] = totalCost; 
 
         return totalCost;
     }
